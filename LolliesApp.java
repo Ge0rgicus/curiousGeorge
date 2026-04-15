@@ -43,8 +43,7 @@ class LollyDetails extends Lollies {
     private boolean sugarFree;
     private boolean glutenFree;
 
-    public LollyDetails(String name, LollySize size, String colour, double price,
-                        boolean sugarFree, boolean glutenFree) {
+    public LollyDetails(String name, LollySize size, String colour, double price, boolean sugarFree, boolean glutenFree) {
         super(name, size, colour, price);
         this.sugarFree = sugarFree;
         this.glutenFree = glutenFree;
