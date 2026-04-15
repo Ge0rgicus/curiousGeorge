@@ -343,9 +343,17 @@ public class LolliesApp {
                 case 9:
                     System.out.print("Recommend size (L/M/S): ");
                     char rs = In.nextUpperChar();
-                    LollySize rsize = (rs == 'L') ? LollySize.LARGE :
-                                      (rs == 'M') ? LollySize.MEDIUM :
-                                                    LollySize.SMALL;
+                    LollySize rsize;
+                    if (rs == 'L'){
+                        rsize = LollySize.LARGE;
+                    }else if (rs == 'M'){
+                        rsize = LollySize.MEDIUM;
+                    }else if (rs == 'S'){
+                        rsize = LollySize.SMALL;
+                    }else{
+                        System.err.println("That Size does not exist.");
+                        break;
+                    }
 
                     Lollies recommended = rec.recommendBySize(rsize);
                     if (recommended == null) {
