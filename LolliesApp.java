@@ -4,6 +4,10 @@ import java.util.*;
 enum LollySize {
     LARGE, MEDIUM, SMALL
 }
+interface Payable {
+    boolean processPayment();
+}
+
 
 class Lollies {
     private String name;
@@ -16,6 +20,9 @@ class Lollies {
         this.size = size;
         this.colour = colour;
         this.price = price;
+    }
+    public Lollies(String name, double price) {
+        this(name, LollySize.MEDIUM, "Unknown", price);
     }
 
     public String getName() { 
@@ -62,7 +69,9 @@ class LollyInventory {
         stock.add(l);
         System.out.println("Added: " + l.getName());
     }
-
+    public void addLolly(String name, double price) {
+        addLolly(new Lollies(name, price));
+    }
     public void removeLolly(String name) {
         for (int i = 0; i < stock.size(); i++) {
             if (stock.get(i).getName().equalsIgnoreCase(name)) {
@@ -182,7 +191,7 @@ class Customer {
     }
 }
 
-class Payment {
+class Payment implements Payable{
     protected double amount;
 
     public Payment(double amount) {
